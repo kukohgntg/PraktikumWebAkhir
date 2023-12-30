@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var dataBarang = [
+        { kode: "001", barang: "barang A", harga: 10000 },
+        { kode: "002", barang: "barang B", harga: 20000 },
+        { kode: "003", barang: "barang C", harga: 30000 },
+      ];
+
+      function transaksi() {
+        var kodeBarang = document.getElementById("kodeBarang").value;
+        var banyakBarang = parseInt(
+          document.getElementById("banyakBarang").value
+        );
+
+        var cariBarang = dataBarang.find((item) => item.kode == kodeBarang);
+        if (cariBarang) {
+          var harga = cariBarang.harga;
+          var total = harga * banyakBarang;
+
+          window.alert("total pembayaran adalah : " + total);
+          var uangBayar = window.prompt("masukan uang user : ");
+          var kembalian = uangBayar - total;
+          window.alert("total kembalian anda adalah : " + kembalian);
+        } else {
+          window.alert("kode barang tidak ditemukan");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <th>kode</th>
+        <th>barang</th>
+        <th>harga</th>
+      </tr>
+      <tr>
+        <td>001</td>
+        <td>barang A</td>
+        <td>10.000</td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>barang B</td>
+        <td>20.000</td>
+      </tr>
+      <tr>
+        <td>003y</td>
+        <td>barang B</td>
+        <td>30.000</td>
+      </tr>
+    </table>
+
+    <h4>Inputan User</h4>
+
+    <table border="1">
+      <tr>
+        <th>Masukan kode</th>
+        <th>:</th>
+        <td><input type="text" id="kodeBarang" /></td>
+      </tr>
+      <tr>
+        <th>Banyak barang</th>
+        <th>:</th>
+        <td><input type="text" id="banyakBarang" /></td>
+      </tr>
+    </table>
+    <button onclick="transaksi()">Submit</button>
+  </body>
+</html>
